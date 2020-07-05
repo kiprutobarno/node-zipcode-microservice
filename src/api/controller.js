@@ -1,11 +1,11 @@
-import * as properties from "../../package.json";
-import distance from "../service/distance";
+import * as properties from '../../package.json';
+import distance from '../service/distance';
 
 const controller = {
   about: (req, res) => {
-    var aboutInfo = {
+    const aboutInfo = {
       name: properties.name,
-      version: properties.version,
+      version: properties.version
     };
     return res.json(aboutInfo);
   },
@@ -14,7 +14,7 @@ const controller = {
       if (err) res.send(err);
       return res.json(dist);
     });
-  },
+  }
 };
 
 export default controller;

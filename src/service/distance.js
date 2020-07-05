@@ -1,32 +1,26 @@
-import request from "request";
-import dotenv from "dotenv";
+import request from 'request';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
 const apiKey = process.env.ZIPCODE_API_KEY;
 const zipCodeUrl = process.env.URL;
 
-let distance = {
-  find: (req, res, next) => {
+const distance = {
+  find: (req, res) => {
     request(
-      zipCodeUrl +
-        apiKey +
-        "/distance.json/" +
-        req.params.zipcode1 +
-        "/" +
-        req.params.zipcode2 +
-        "/mile",
+      `${zipCodeUrl + apiKey}/distance.json/${req.params.zipcode1}/${
+        req.params.zipcode2
+      }/mile`,
       (error, response, body) => {
-        if (!error && response.statusCode == 200) {
-          response = JSON.parse(body);
-          res.send(response);
+        if (!error && response.statusCode === 200) {
+          res.send(JSON.parse(body));
         } else {
-          console.log(response.statusCode + response.body);
-          res.send(response.body);
+          res.status(response.statusCode).send(response.body);
         }
       }
     );
-  },
+  }
 };
 
 export default distance;
