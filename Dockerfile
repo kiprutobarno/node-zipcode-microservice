@@ -15,6 +15,8 @@ RUN yarn install
 # copy all files from the project's root to /app
 COPY . .
 
+ENV ZIPCODE_API_KEY="DhTtxj3lYBDpQHJwnwLFrvpoYe54yd13kb8YykpfabbPyrMWBe586NiN68afTC9S"
+
 EXPOSE 8000/tcp
 
 CMD ["yarn", "start"]
