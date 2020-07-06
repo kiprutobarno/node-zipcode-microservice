@@ -1,0 +1,15 @@
+version: "3"
+services:
+    api:
+        image: ywalakamar/node-zipcode-microservices:latest
+        build: .
+        networks:
+            - backend
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./:/app
+
+networks:
+    backend:
+        driver: bridge
