@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const apiKey = process.env.ZIPCODE_API_KEY;
-const zipCodeUrl = process.env.URL;
+const zipCodeUrl = 'https://www.zipcodeapi.com/rest/';
 
 const distance = {
   find: (req, res) => {
